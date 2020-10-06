@@ -7,10 +7,10 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% block header %}
+    <header>
         {{ include('wild/navbar.html.twig') }}
-        {% endblock %}
+    </header>
+    <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
            {{ encore_entry_script_tags('app') }}

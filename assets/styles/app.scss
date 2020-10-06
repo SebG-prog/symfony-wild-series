@@ -1,13 +1,17 @@
 
 // the ~ allows you to reference things in node_modules
-@import "~bootstrap/scss/bootstrap";
 
 // customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
-$theme-colors: (
-  "primary": green, //#0074d9
-  "danger": #ff4136
-);
+$primary: darken(#007bff, 10%);
+
+//Another way to do it...
+// $theme-colors: (
+//     "primary": #007bff
+// );
+
+//This line should be put after variables used to override.
+@import "~bootstrap/scss/bootstrap";
+
 body {
-    background-color: whitesmoke;
+background-color: whitesmoke;
 }
