@@ -91,7 +91,7 @@ Class WildController extends AbstractController
     {
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => $categoryName]);
+            ->findOneBy(['name' => mb_strtolower($categoryName)]);
         
         if (!$category) {
             throw $this->createNotFoundException(
@@ -101,7 +101,7 @@ Class WildController extends AbstractController
         
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
-            ->findBy(['category' => $category->getId()], ['id' => 'DESC'], 3);
+            ->findBy(['category' => $category], ['id' => 'DESC'], 3);
         
         if (!$programs) {
             throw $this->createNotFoundException(
