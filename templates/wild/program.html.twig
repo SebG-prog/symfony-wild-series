@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{dump(
+        seasons[0].program.title,
+        seasons[0].number,
+        seasons[0].year,
+        seasons[0].description
+        )}}
+
+    {# <h1>{{ category.name }}</h1> #}
+
+    {# {% for program in programs %}
+    <div class="container">
+        <h2>{{ program.id }}. {{ program.title }}</h2>
+        <p>{{ program.summary }}</p>
+    </div>
+    {% endfor %} #}
+
+{% endblock %}
