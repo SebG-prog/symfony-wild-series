@@ -157,4 +157,44 @@ Class WildController extends AbstractController
             'seasons' => $programSeasons
             ]);
     }
+
+    /**
+     * @param int $id Number of the season
+     * @Route("/season/{id}",
+     *  name="show_season",
+     *  methods={"GET"},
+     *  requirements = {"id" = "^[1-9]+$"}
+     * )
+     * @return Response
+     */
+    public function showBySeason(int $id): Response
+    {
+        if (!$id) {
+            throw $this->createNotFoundException(
+                "No valid id was given"
+            );
+        }
+
+        $season = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findOneBy(['id' => $id]);
+        
+        if (!$season) {
+            throw $this->createNotFoundException(
+                'No season found with the id: ' . $id
+            );
+        }
+        
+        $program = $season->getProgram();
+        
+        $episodes = $season->getEpisodes();
+
+        return $this->render('wild/season.html.twig', [
+            'season' => $season,
+            'program' => $program,
+            'episodes' => $episodes,
+            ]);
+    }
+
+
 }

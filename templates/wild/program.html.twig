@@ -2,20 +2,20 @@
 
 {% block body %}
 
-    {{dump(
-        seasons[0].program.title,
-        seasons[0].number,
-        seasons[0].year,
-        seasons[0].description
-        )}}
+    {# {{dump(seasons, program, )}} #}
 
-    {# <h1>{{ category.name }}</h1> #}
+    <h1>{{ program.title }}</h1>
 
-    {# {% for program in programs %}
+    {% for season in seasons %}
     <div class="container">
-        <h2>{{ program.id }}. {{ program.title }}</h2>
-        <p>{{ program.summary }}</p>
+        <h2>Season {{ season.number }} - {{ season.episodes|length }} episodes - ({{ season.year }})</h2>
+        <p>{{ season.description }}</p>
+        <a href="{{ path('wild_show_season', { 'id': season.number }) }}">See episode details</a>
     </div>
-    {% endfor %} #}
+    {% endfor %}
+    <a href="{{ path('wild_show_category', {'categoryName': program.category.name}) }}">
+        Back to category selection
+    </a>
+
 
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {# {{dump(season, program, episodes)}} #}
+
+    <h1>{{ program.title }} - ({{ program.year }})</h1>
+    <h2>Season {{ season.number }}</h2>
+
+    {% for episode in episodes %}
+    <div class="container">
+        <h2>{{ episode.number }}. {{ episode.title }}</h2>
+        <p>{{ episode.summary }}</p>
+    </div>
+    {% endfor %}
+
+    <a 
+    href="{{ 
+        path('wild_show_program', 
+        {'programName': program.title|lower|replace({' ':'-'})})
+    }}">
+        Back to season selection
+    </a>
+
+{% endblock %}
