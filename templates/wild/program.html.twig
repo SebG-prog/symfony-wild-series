@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Season {{ season.number }} - {{ season.episodes|length }} episodes - ({{ season.year }})</h2>
         <p>{{ season.description }}</p>
-        <a href="{{ path('wild_show_season', { 'id': season.number }) }}">See episode details</a>
+        <a href="{{ path('wild_show_season', { 'id': season.number }) }}">See season details</a>
     </div>
     {% endfor %}
     <a href="{{ path('wild_show_category', {'categoryName': program.category.name}) }}">

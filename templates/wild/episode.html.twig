@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {# {{dump(season, program, episode)}} #}
+    <h1>{{ program.title }}</h1>
+    <h2>Season {{ season.number}}</h2>
+    <h3>Episode {{ episode.number }}</h3>
+    <p>{{ episode.summary }}</p>
+    <a href="{{ path('wild_show_season', {'id': season.id})}}">Back to season details</a>
+
+{% endblock %}
