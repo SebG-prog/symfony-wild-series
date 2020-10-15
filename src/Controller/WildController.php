@@ -2,6 +2,7 @@
 // src/Controller/WildController.php
 namespace App\Controller;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
@@ -217,7 +218,7 @@ Class WildController extends AbstractController
             ]);
     }
 
-        /**
+    /**
      * @param Episode param converter of id to Episode object
      * @Route("/episode/{id}",
      *  name="show_episode",
@@ -237,6 +238,23 @@ Class WildController extends AbstractController
             'episode' => $episode,
             ]);
     }
+
+    /**
+     * 
+     * @param Actor 
+     * @Route("/actor/{id}",
+     * name="show_actor"
+     * )
+     * @return Response
+     */
+    public function showActor(Actor $actor): Response
+    {
+        return $this->render('wild/actor.html.twig', [
+            'actor' => $actor
+        ]);
+    }
+
+
 
 
 }

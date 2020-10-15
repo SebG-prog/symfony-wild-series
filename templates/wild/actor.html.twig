@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {# {{dump(actor, actor.programs[0])}} #}
+    <h1>{{ actor.name }}</h1>
+    {% for program in actor.programs %}
+        <a href="{{ path('wild_show_program', {
+            'programName': program.title|lower|replace({' ':'-'}) }
+            )}}"
+        >
+            {{ program.title }}
+        </a>
+    {% endfor %}
+{% endblock %}

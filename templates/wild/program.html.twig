@@ -6,13 +6,22 @@
 
     <h1>{{ program.title }}</h1>
 
-    {% for season in seasons %}
     <div class="container">
+    {% for season in seasons %}
         <h2>Season {{ season.number }} - {{ season.episodes|length }} episodes - ({{ season.year }})</h2>
         <p>{{ season.description }}</p>
         <a href="{{ path('wild_show_season', { 'id': season.number }) }}">See season details</a>
-    </div>
     {% endfor %}
+    <br/>
+    <strong>Acteur :</strong>
+    <ul>
+        {% for actor in program.actors %}
+            <li><a href="{{ path('wild_show_actor', {'id': actor.id}) }}">{{ actor.name }}</a></li>
+        {% else %}
+            <li>Aucun acteur pour cette série</li>
+        {% endfor %}
+    </ul>
+    </div>
     <a href="{{ path('wild_show_category', {'categoryName': program.category.name}) }}">
         Back to category selection
     </a>
