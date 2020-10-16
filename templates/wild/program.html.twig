@@ -10,7 +10,7 @@
     {% for season in seasons %}
         <h2>Season {{ season.number }} - {{ season.episodes|length }} episodes - ({{ season.year }})</h2>
         <p>{{ season.description }}</p>
-        <a href="{{ path('wild_show_season', { 'id': season.number }) }}">See season details</a>
+        <a href="{{ path('wild_show_season', { 'id': season.id }) }}">See season details</a>
     {% endfor %}
     <br/>
     <strong>Acteur :</strong>

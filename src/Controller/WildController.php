@@ -185,7 +185,7 @@ Class WildController extends AbstractController
      * @Route("/season/{id}",
      *  name="show_season",
      *  methods={"GET"},
-     *  requirements = {"id" = "^[1-9]+$"}
+     *  requirements = {"id" = "^[0-9]+$"}
      * )
      * @return Response
      */
