@@ -139,34 +139,34 @@ Class WildController extends AbstractController
     }
 
     /**
-     * @param string $programName Name of the program
-     * @Route("/program/{programName}",
+     * @param string $slug Name of the program
+     * @Route("/program/{slug}",
      *  name="show_program",
-     *  requirements = {"programName" = "^[a-z0-9-]+$"}
+     *  requirements = {"slug" = "^[a-z0-9-]+$"}
      * )
      * @return Response
      */
-    public function showByProgram(string $programName): Response
+    public function showByProgram(string $slug): Response
     {
-        if (!$programName) {
+        if (!$slug) {
             throw $this->createNotFoundException(
                 "No program name was given"
             );
         }
 
-        $programName = preg_replace(
+        $slug = preg_replace(
             '/-/',
             ' ',
-            ucwords(trim(strip_tags($programName)), "-")
+            ucwords(trim(strip_tags($slug)), "-")
         );
 
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
-            ->findOneBy(['title' => $programName]);
+            ->findOneBy(['title' => $slug]);
         
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with the name ' . $programName . ' was found'
+                'No program with the name ' . $slug . ' was found'
             );
         }
 

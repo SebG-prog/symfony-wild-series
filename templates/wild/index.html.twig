@@ -14,7 +14,7 @@
             <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
             <a href="{{ path('wild_show_program', {
-                'programName': program.title|lower|replace({' ':'-'})
+                'slug': program.slug
                 }) }}"
             >
             {{ program.title }}
