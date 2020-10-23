@@ -1,0 +1,19 @@
+{% apply inky_to_html %}
+
+    <img src="{{ program.poster }}" alt="{{ program.title }}">
+    <div>
+        <h1>{{ program.title }}</h1>
+        <p>{{ program.summary }}</p>
+        <p>Catégorie : {{ program.category.name }}</p>
+        <h2>Acteurs :</h2>
+        <ul>
+            {% for actor in program.actors %}
+                <li><h4>{{ actor.name }}</h4></li>
+            {% else %}
+                <h4>Aucun acteur pour cette série</h4>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+
+{% endapply %}

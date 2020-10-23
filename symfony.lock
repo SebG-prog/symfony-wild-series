@@ -111,6 +111,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
     },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
+    },
     "monolog/monolog": {
         "version": "1.25.5"
     },
@@ -270,6 +273,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v4.4.15"
@@ -532,8 +544,17 @@
     "symfony/yaml": {
         "version": "v4.4.15"
     },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.3"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.1.0"
+    },
     "twig/extra-bundle": {
         "version": "v3.0.5"
+    },
+    "twig/inky-extra": {
+        "version": "v3.1.0"
     },
     "twig/twig": {
         "version": "v3.0.5"
