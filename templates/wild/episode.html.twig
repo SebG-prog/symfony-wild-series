@@ -2,11 +2,27 @@
 
 {% block body %}
 
-    {# {{dump(season, program, episode)}} #}
+    {# {{dump(season, program, episode.comments[0].author.username)}} #}
     <h1>{{ program.title }}</h1>
     <h2>Season {{ season.number}}</h2>
     <h3>Episode {{ episode.number }}</h3>
     <p>{{ episode.summary }}</p>
+    <h3>Commentaires</h3>
+    {% for comment in episode.comments %}
+        <h4>{{ comment.author.username }}</h4>
+        <p>{{ comment.comment }}</p>
+        <p>{{ comment.rate }}</p>
+    {% else %}
+        <p>Aucun commentaire pour cet épisode<  /p>
+    {% endfor %}
+    {# <p>{{ episode.comments[0] }}<p> #}
     <a href="{{ path('wild_show_season', {'id': season.id})}}">Back to season details</a>
 
+    {% if app.user %}
+      <h4>Ajouter un commentaire</h4>
+      {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+      {{ form_end(form) }}
+    {% endif %}
 {% endblock %}
