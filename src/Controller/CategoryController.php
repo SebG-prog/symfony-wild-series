@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ class CategoryController extends AbstractController
     /**
      * @param Request
      * @Route("/category/add", name="add_category")
+     * @IsGranted("ROLE_ADMIN")
      * @return Response
      */
     public function add(Request $request): Response

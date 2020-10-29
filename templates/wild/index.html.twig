@@ -20,6 +20,9 @@
             {{ program.title }}
             </a>
         </div>
+        {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('program_edit', { 'id': program.id} ) }}">Éditer</a>
+        {% endif %}
     {% else %}
         Aucune série trouvée.
     {% endfor %}
