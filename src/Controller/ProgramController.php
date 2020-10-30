@@ -13,6 +13,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Twig\Extra\Inky\InkyExtension;
 
 
@@ -24,7 +25,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/", name="program_index", methods={"GET"})
      */
-    public function index(ProgramRepository $programRepository): Response
+    public function index(ProgramRepository $programRepository, SessionInterface $session): Response
     {
         return $this->render('program/index.html.twig', [
             'programs' => $programRepository->findAll(),
@@ -46,6 +47,9 @@ class ProgramController extends AbstractController
             $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
+
+            // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
+            $this->addFlash('success', 'The new program has been created');
 
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mailer_from'))
